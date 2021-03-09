@@ -1,0 +1,17 @@
+{
+  "name": "PaperItemId",
+  "fields": [],
+  "relationships": [],
+  "changelogDate": "20210309134100",
+  "entityTableName": "paper_item_id",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["ReferenceManagementContext", "gateway"],
+  "microserviceName": "ReferenceManagementContext"
+}
