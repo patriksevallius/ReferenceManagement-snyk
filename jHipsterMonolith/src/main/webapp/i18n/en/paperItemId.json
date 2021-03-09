@@ -1,0 +1,21 @@
+{
+  "referenceManagementMonolithApp": {
+    "paperItemId": {
+      "home": {
+        "title": "Paper Item Ids",
+        "createLabel": "Create a new Paper Item Id",
+        "createOrEditLabel": "Create or edit a Paper Item Id",
+        "notFound": "No Paper Item Ids found"
+      },
+      "created": "A new Paper Item Id is created with identifier {{ param }}",
+      "updated": "A Paper Item Id is updated with identifier {{ param }}",
+      "deleted": "A Paper Item Id is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Paper Item Id {{ id }}?"
+      },
+      "detail": {
+        "title": "Paper Item Id"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+
+/* Bounded Context ReferenceManagementContext */
+
+entity PaperItem {
+	title String
+	authors String
+	venue String
+}
+
+
+entity PaperCollection {
+}
+
+
+entity PaperItemId {
+	id String
+}
+
+
+entity PaperCollectionId {
+	id String
+}
+
+application {
+	config {
+		baseName ReferenceManagementMonolith,
+		packageName io.microservices.demo.referencemanagement,
+	    applicationType monolith
+		clientFramework react
+		enableSwaggerCodegen true
+	}
+	entities PaperItem, PaperCollection, PaperItemId, PaperCollectionId
+}
+
+/* relationships */
+relationship OneToMany {
+			PaperCollection{paperitemList} to PaperItem
+}
+relationship OneToOne {
+			PaperItem{paperitemId} to PaperItemId
+			PaperCollection{paperCollectionId} to PaperCollectionId
+}
+
+/* additional options */
+dto * with mapstruct
+service * with serviceImpl
+

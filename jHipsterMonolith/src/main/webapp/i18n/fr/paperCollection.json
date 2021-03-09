@@ -1,0 +1,23 @@
+{
+  "referenceManagementMonolithApp": {
+    "paperCollection": {
+      "home": {
+        "title": "PaperCollections",
+        "createLabel": "Créer un nouveau Paper Collection",
+        "createOrEditLabel": "Créer ou éditer un Paper Collection",
+        "notFound": "Aucun Paper Collection trouvé"
+      },
+      "created": "Un nouveau Paper Collection a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Paper Collection avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Paper Collection avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Paper Collection {{ id }} ?"
+      },
+      "detail": {
+        "title": "Paper Collection"
+      },
+      "paperCollectionId": "Paper Collection Id",
+      "paperitemList": "Paperitem List"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "PaperItem",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "authors",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "venue",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "paperItemId",
+      "otherEntityRelationshipName": "paperItem",
+      "relationshipName": "paperitemId",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "paperCollection",
+      "otherEntityRelationshipName": "paperitemList",
+      "relationshipName": "paperCollection",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210309135409",
+  "entityTableName": "paper_item",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["ReferenceManagementMonolith"]
+}

@@ -1,0 +1,21 @@
+{
+  "referenceManagementMonolithApp": {
+    "paperCollectionId": {
+      "home": {
+        "title": "PaperCollectionIds",
+        "createLabel": "Créer un nouveau Paper Collection Id",
+        "createOrEditLabel": "Créer ou éditer un Paper Collection Id",
+        "notFound": "Aucun Paper Collection Id trouvé"
+      },
+      "created": "Un nouveau Paper Collection Id a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Paper Collection Id avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Paper Collection Id avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Paper Collection Id {{ id }} ?"
+      },
+      "detail": {
+        "title": "Paper Collection Id"
+      }
+    }
+  }
+}
