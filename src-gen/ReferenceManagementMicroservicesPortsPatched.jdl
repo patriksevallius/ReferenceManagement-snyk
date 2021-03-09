@@ -1,0 +1,60 @@
+
+/* Bounded Context ReferenceManagementContext */
+
+entity PaperItem {
+	title String
+	authors String
+	venue String
+}
+
+
+entity PaperCollection {
+}
+
+
+entity PaperItemId {
+	id String
+}
+
+
+entity PaperCollectionId {
+	id String
+}
+
+microservice PaperItem, PaperCollection, PaperItemId, PaperCollectionId with ReferenceManagementContext
+
+application {
+	config {
+		baseName ReferenceManagementContext,
+		packageName org.contextmapper.generated.referencemanagementcontext,
+		applicationType microservice
+		serverPort 8083 // changed 
+		enableSwaggerCodegen true
+	}
+	entities PaperItem, PaperCollection, PaperItemId, PaperCollectionId
+}
+
+/* relationships */
+relationship OneToMany {
+			PaperCollection{paperitemList} to PaperItem
+}
+relationship OneToOne {
+			PaperItem{paperitemId} to PaperItemId
+			PaperCollection{paperCollectionId} to PaperCollectionId
+}
+
+/* microservice gateway app */
+application {
+	config {
+		baseName gateway,
+		packageName org.contextmapper.generated.gateway,
+		applicationType gateway
+		serverPort 8082 // changed
+	}
+	entities PaperItem, PaperCollection, PaperItemId, PaperCollectionId
+}
+
+/* additional options */
+dto * with mapstruct
+service * with serviceImpl
+

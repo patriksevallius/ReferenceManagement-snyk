@@ -1,0 +1,25 @@
+Domain PublicationManagement {
+	Subdomain PaperArchive supports PaperArchiving {
+		domainVisionStatement "Aims at promoting the following benefit for a Researcher: other researchers can find the referenced paper easily."
+		Entity PaperItem {
+			String title
+			String authors
+			String venue
+		}
+		Entity PaperCollection {
+			- List<PaperItem> paperitemList
+		}
+		Service PaperArchivingService {
+			createPaperItem;
+		}
+	}
+
+}
+
+UserStory PaperArchiving {
+	As a "Researcher" 
+  I want to create a "PaperItem" 
+  with its "title", "authors", "venue" in a "PaperCollection"
+  so that "other researchers can find the referenced paper easily."
+}
+

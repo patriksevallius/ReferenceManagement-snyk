@@ -1,0 +1,6 @@
+UserStory PaperArchiving {
+  As a "Researcher" 
+  I want to create a "PaperItem" 
+  with its "title", "authors", "venue" in a "PaperCollection"
+  so that "other researchers can find the referenced paper easily."
+}
