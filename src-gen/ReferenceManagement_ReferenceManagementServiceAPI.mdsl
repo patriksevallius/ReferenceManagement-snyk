@@ -1,0 +1,46 @@
+// Generated from DDD Context Map 'null' at 09.03.2021 16:44:28 CET.
+API description ReferenceManagementServiceAPI
+
+
+data type PaperItem { "title":D<string>, "authors":D<string>, "venue":D<string>, "paperitemId":PaperItemId }
+data type PaperItemDTO { "title":D<string>, "authors":D<string>, "venue":D<string>, "paperitemId":PaperItemKey }
+data type PaperItemId { "id":D<string> }
+data type PaperItemIdViewModel { "id":D<string> }
+data type PaperItemKey { "id":D<string> }
+data type PaperItemViewModel { "title":D<string>, "authors":D<string>, "venue":D<string>, "paperitemId":PaperItemIdViewModel }
+
+
+endpoint type PaperArchiveFacade
+	serves as INFORMATION_HOLDER_RESOURCE
+	exposes
+		operation createPaperItem
+			with responsibility STATE_CREATION_OPERATION
+			expecting
+				payload PaperItemDTO
+			delivering
+				payload PaperItemDTO
+		operation lookupPapersFromAuthor
+			with responsibility RETRIEVAL_OPERATION
+			expecting
+				payload D<string>
+			delivering
+				payload PaperItemDTO*
+		operation convertToMarkdownForWebsite
+			expecting
+				payload PaperItemKey
+			delivering
+				payload D<string>
+
+
+// Generated from DDD upstream Bounded Context 'ReferenceManagementService' implementing PUBLISHED_LANGUAGE (PL).
+API provider ReferenceManagementServiceProvider
+	// This Bounded Context realizes the following subdomains: PaperArchive
+	offers PaperArchiveFacade
+	at endpoint location "http://localhost:8002"
+		via protocol "tbd" // The protocol is generated if you specify the implementation technology in CML
+
+
+// Generated from DDD downstream Bounded Context 'ReferenceManagementFrontend' implementing CONFORMIST (CF).
+API client ReferenceManagementFrontendClient
+	// This Bounded Context realizes the following subdomains: PaperArchive
+	consumes PaperArchiveFacade

@@ -1,0 +1,34 @@
+// Generated from DDD Context Map 'null' at 09.03.2021 16:44:28 CET.
+API description ReferenceManagementFrontendAPI
+
+
+data type PaperItemIdViewModel { "id":D<string> }
+data type PaperItemViewModel { "title":D<string>, "authors":D<string>, "venue":D<string>, "paperitemId":PaperItemIdViewModel }
+
+
+endpoint type PaperArchiveAggregateViewModel
+	exposes
+		operation createPaperItem
+			expecting
+				payload PaperItemViewModel
+			delivering
+				payload PaperItemViewModel
+		operation lookupPapersFromAuthor
+			expecting
+				payload D<string>
+			delivering
+				payload PaperItemViewModel*
+		operation convertToMarkdownForWebsite
+			expecting
+				payload PaperItemIdViewModel
+			delivering
+				payload D<string>
+
+
+API provider ReferenceManagementFrontendProvider
+	// This Bounded Context realizes the following subdomains: PaperArchive
+	offers PaperArchiveAggregateViewModel
+	at endpoint location "http://localhost:8000"
+		via protocol "tbd" // The protocol is generated if you specify the implementation technology in CML
+
+

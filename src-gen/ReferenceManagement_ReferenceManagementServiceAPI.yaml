@@ -1,0 +1,125 @@
+openapi: 3.0.1
+info:
+  title: ReferenceManagementServiceAPI
+  version: "1.0"
+servers: []
+tags:
+- name: PaperArchiveFacade
+  externalDocs:
+    description: The role of this endpoint is Information Holder Resource pattern
+    url: https://microservice-api-patterns.org/patterns/responsibility/endpointRoles/InformationHolderResource.html
+paths:
+  /PaperArchiveFacade:
+    summary: general data-oriented endpoint
+    get:
+      tags:
+      - PaperArchiveFacade
+      summary: read only
+      description: This operation realizes the [Retrieval Operation](https://microservice-api-patterns.org/patterns/responsibility/operationResponsibilities/RetrievalOperation.html)
+        pattern.
+      operationId: lookupPapersFromAuthor
+      parameters:
+      - name: Parameter1
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: lookupPapersFromAuthor successful execution
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaperItemDTO'
+    put:
+      tags:
+      - PaperArchiveFacade
+      summary: write only
+      description: This operation realizes the [State Creation Operation](https://microservice-api-patterns.org/patterns/responsibility/operationResponsibilities/StateCreationOperation.html)
+        pattern.
+      operationId: createPaperItem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaperItemDTO'
+      responses:
+        "200":
+          description: createPaperItem successful execution
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaperItemDTO'
+    post:
+      tags:
+      - PaperArchiveFacade
+      description: unspecified operation responsibility
+      operationId: convertToMarkdownForWebsite
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaperItemKey'
+      responses:
+        "200":
+          description: convertToMarkdownForWebsite successful execution
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  anonymous1:
+                    type: string
+components:
+  schemas:
+    PaperItem:
+      type: object
+      properties:
+        title:
+          type: string
+        authors:
+          type: string
+        venue:
+          type: string
+        paperitemId:
+          $ref: '#/components/schemas/PaperItemId'
+    PaperItemDTO:
+      type: object
+      properties:
+        title:
+          type: string
+        authors:
+          type: string
+        venue:
+          type: string
+        paperitemId:
+          $ref: '#/components/schemas/PaperItemKey'
+    PaperItemId:
+      type: object
+      properties:
+        id:
+          type: string
+    PaperItemIdViewModel:
+      type: object
+      properties:
+        id:
+          type: string
+    PaperItemKey:
+      type: object
+      properties:
+        id:
+          type: string
+    PaperItemViewModel:
+      type: object
+      properties:
+        title:
+          type: string
+        authors:
+          type: string
+        venue:
+          type: string
+        paperitemId:
+          $ref: '#/components/schemas/PaperItemIdViewModel'

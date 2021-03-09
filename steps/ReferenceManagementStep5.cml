@@ -1,0 +1,123 @@
+ContextMap {
+	contains ReferenceManagementFrontend
+	contains ReferenceManagementService
+
+	ReferenceManagementService [ PL ] -> [ CF ] ReferenceManagementFrontend {
+		exposedAggregates PaperArchiveFacade
+	}
+}
+
+BoundedContext ReferenceManagementContext implements PaperArchive {
+	domainVisionStatement "This Bounded Context realizes the following subdomains: PaperArchive"
+	type APPLICATION
+	/* This Aggregate contains the entities and services of the 'PaperArchive' subdomain.
+	 * TODO: You can now refactor the Aggregate, for example by using the 'Split Aggregate by Entities' architectural refactoring.
+	 * TODO: Add attributes and operations to the entities.
+	 * TODO: Add operations to the services.
+	 * Find examples and further instructions on our website: https://contextmapper.org/docs/rapid-ooad/ */
+	Aggregate PaperArchiveAggregate {
+		Service PaperArchivingService {
+			@PaperItem createPaperItem (@PaperItem paperItem); // improved
+			Set<@PaperItem>lookupPapersFromAuthor(String who); // added 
+			String convertToMarkdownForWebsite(@PaperItemId id); // added
+		}
+		Entity PaperItem {
+			String title
+			String authors
+			String venue
+			- PaperItemId paperitemId
+		}
+		Entity PaperCollection {
+			- List<PaperItem> paperitemList
+			- PaperCollectionId paperCollectionId
+		}
+		ValueObject PaperItemId {
+			String id
+		}
+		ValueObject PaperCollectionId {
+			String id
+		}
+	}
+}
+
+BoundedContext ReferenceManagementService implements PaperArchive {
+	domainVisionStatement "This Bounded Context realizes the following subdomains: PaperArchive"
+	type SYSTEM
+	"INFORMATION_HOLDER_RESOURCE" Aggregate PaperArchiveFacade {
+		Service PaperArchivingService {
+			"STATE_CREATION_OPERATION" @PaperItemDTO createPaperItem (@PaperItemDTO paperItem);
+			"RETRIEVAL_OPERATION" Set<@PaperItemDTO> lookupPapersFromAuthor (String who);
+			String convertToMarkdownForWebsite (@PaperItemKey id);
+		}
+		Entity PaperItemDTO {
+			String title
+			String authors
+			String venue
+			- PaperItemKey paperitemId
+		}
+		Entity PaperCollectionBackend {
+			- List<PaperItemDTO> paperitemList
+			- PaperCollectionKey paperCollectionId
+		}
+		ValueObject PaperItemKey {
+			String id
+		}
+		ValueObject PaperCollectionKey {
+			String id
+		}
+	}
+}
+
+BoundedContext ReferenceManagementFrontend implements PaperArchive {
+	domainVisionStatement "This Bounded Context realizes the following subdomains: PaperArchive"
+	type SYSTEM
+	Aggregate PaperArchiveAggregateViewModel {
+		Service PaperArchivingService {
+			@PaperItemViewModel createPaperItem (@PaperItemViewModel paperItem);
+			Set<@PaperItemViewModel> lookupPapersFromAuthor (String who);
+			String convertToMarkdownForWebsite (@PaperItemIdViewModel id);
+		}
+		Entity PaperItemViewModel {
+			String title
+			String authors
+			String venue
+			- PaperItemIdViewModel paperitemId
+		}
+		Entity PaperCollectionViewModel {
+			- List<PaperItemViewModel> paperitemList
+			- PaperCollectionIdViewModel paperCollectionId
+		}
+		ValueObject PaperItemIdViewModel {
+			String id
+		}
+		ValueObject PaperCollectionIdViewModel {
+			String id
+		}
+	}
+}
+
+Domain PublicationManagement {
+	Subdomain PaperArchive supports PaperArchiving {
+		domainVisionStatement "Aims at promoting the following benefit for a Researcher: other researchers can find the referenced paper easily."
+		Entity PaperItem {
+			String title
+			String authors
+			String venue
+		}
+		Entity PaperCollection {
+			- List<PaperItem> paperitemList
+		}
+		Service PaperArchivingService {
+			createPaperItem;
+		}
+	}
+
+}
+
+UserStory PaperArchiving {
+	As a "Researcher" 
+  I want to create a "PaperItem" 
+  with its "title", "authors", "venue" in a "PaperCollection"
+  so that "other researchers can find the referenced paper easily."
+}
+
