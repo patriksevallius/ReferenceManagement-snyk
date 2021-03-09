@@ -1,0 +1,31 @@
+{
+  "name": "PaperCollection",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "paperCollectionId",
+      "otherEntityRelationshipName": "paperCollection",
+      "relationshipName": "paperCollectionId",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "paperItem",
+      "otherEntityRelationshipName": "paperCollection",
+      "relationshipName": "paperitemList"
+    }
+  ],
+  "changelogDate": "20210309143710",
+  "entityTableName": "paper_collection",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["ReferenceManagementMonolith"]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "PaperCollectionId",
+  "fields": [],
+  "relationships": [],
+  "changelogDate": "20210309143910",
+  "entityTableName": "paper_collection_id",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["ReferenceManagementMonolith"]
+}

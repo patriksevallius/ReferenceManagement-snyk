@@ -1,0 +1,26 @@
+{
+  "referenceManagementMonolithApp": {
+    "paperItem": {
+      "home": {
+        "title": "PaperItems",
+        "createLabel": "Créer un nouveau Paper Item",
+        "createOrEditLabel": "Créer ou éditer un Paper Item",
+        "notFound": "Aucun Paper Item trouvé"
+      },
+      "created": "Un nouveau Paper Item a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Paper Item avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Paper Item avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Paper Item {{ id }} ?"
+      },
+      "detail": {
+        "title": "Paper Item"
+      },
+      "title": "Title",
+      "authors": "Authors",
+      "venue": "Venue",
+      "paperitemId": "Paperitem Id",
+      "paperCollection": "Paper Collection"
+    }
+  }
+}
