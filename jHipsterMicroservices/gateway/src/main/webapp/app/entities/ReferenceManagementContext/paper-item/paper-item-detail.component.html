@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paperItem">
+            <h2><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.detail.title">Paper Item</span> {{ paperItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.title">Title</span></dt>
+                <dd>
+                    <span>{{ paperItem.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.authors">Authors</span></dt>
+                <dd>
+                    <span>{{ paperItem.authors }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.venue">Venue</span></dt>
+                <dd>
+                    <span>{{ paperItem.venue }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.paperitemId">Paperitem Id</span></dt>
+                <dd>
+                    <div *ngIf="paperItem.paperitemIdId">
+                        <a [routerLink]="['/paper-item-id', paperItem.paperitemIdId, 'view']">{{ paperItem.paperitemIdId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.paperCollection">Paper Collection</span></dt>
+                <dd>
+                    <div *ngIf="paperItem.paperCollectionId">
+                        <a [routerLink]="['/paper-collection', paperItem.paperCollectionId, 'view']">{{ paperItem.paperCollectionId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/paper-item', paperItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

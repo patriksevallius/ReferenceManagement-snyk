@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.home.title">Paper Items</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-paper-item" [routerLink]="['/paper-item/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gatewayApp.referenceManagementContextPaperItem.home.createLabel">
+            Create a new Paper Item
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="paperItems?.length === 0">
+        <span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.home.notFound">No paperItems found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="paperItems && paperItems.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.title">Title</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.authors">Authors</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.venue">Venue</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.paperitemId">Paperitem Id</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.referenceManagementContextPaperItem.paperCollection">Paper Collection</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let paperItem of paperItems ;trackBy: trackId">
+                    <td><a [routerLink]="['/paper-item', paperItem.id, 'view']">{{ paperItem.id }}</a></td>
+                    <td>{{ paperItem.title }}</td>
+                    <td>{{ paperItem.authors }}</td>
+                    <td>{{ paperItem.venue }}</td>
+                    <td>
+                        <div *ngIf="paperItem.paperitemIdId">
+                            <a [routerLink]="['/paper-item-id', paperItem.paperitemIdId , 'view']" >{{ paperItem.paperitemIdId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="paperItem.paperCollectionId">
+                            <a [routerLink]="['/paper-collection', paperItem.paperCollectionId , 'view']" >{{ paperItem.paperCollectionId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/paper-item', paperItem.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/paper-item', paperItem.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(paperItem)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

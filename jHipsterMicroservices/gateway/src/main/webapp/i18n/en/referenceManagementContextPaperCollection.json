@@ -1,0 +1,27 @@
+{
+  "gatewayApp": {
+    "referenceManagementContextPaperCollection": {
+      "home": {
+        "title": "Paper Collections",
+        "createLabel": "Create a new Paper Collection",
+        "createOrEditLabel": "Create or edit a Paper Collection",
+        "notFound": "No Paper Collections found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Paper Collection {{ id }}?"
+      },
+      "detail": {
+        "title": "Paper Collection"
+      },
+      "paperCollectionId": "Paper Collection Id",
+      "paperitemList": "Paperitem List"
+    }
+  },
+  "referenceManagementContextApp": {
+    "referenceManagementContextPaperCollection": {
+      "created": "A new Paper Collection is created with identifier {{ param }}",
+      "updated": "A Paper Collection is updated with identifier {{ param }}",
+      "deleted": "A Paper Collection is deleted with identifier {{ param }}"
+    }
+  }
+}
