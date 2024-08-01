@@ -13,7 +13,7 @@
     "@fortawesome/react-fontawesome": "0.1.9",
     "availity-reactstrap-validation": "2.6.1",
     "axios": "0.21.3",
-    "bootstrap": "4.4.1",
+    "bootstrap": "5.0.0",
     "loaders.css": "0.1.2",
     "lodash": "4.17.21",
     "moment": "2.29.4",
